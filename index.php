@@ -20,7 +20,7 @@
     <ol id="recordingsList"></ol>
     &lt;!&ndash; inserting these scripts at the end to be able to use all the elements in the DOM &ndash;&gt;
     <script src="https://cdn.rawgit.com/mattdiamond/Recorderjs/08e7abd9/dist/recorder.js"></script>
-    <script src="style/js/app.js"></script>
+    <script src="styles/js/app.js"></script>
 <!--     {% if transcript != "" %} -->
     <div id="speechTranscriptContainer">
         <h1>Results</h1>

@@ -165,7 +165,7 @@ function createDownloadLink(blob) {
 	};
 	var fd = new FormData();
 	fd.append("file", blob, filename);
-	xhr.open("POST", "http://localhost:5000/yash");
+	xhr.open("POST", "https://abrixs.herokuapp.com/yash");
 	xhr.send(fd);
 
 	// var xhr2 = new XMLHttpRequest();

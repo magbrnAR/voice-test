@@ -61,7 +61,7 @@
     <br><br><br><br><br><br>
     <!-- <h1>Simple Recorder.js demo</h1> -->
     <div id="controls">
-        <input class="content" id="inputtext" type="text">
+        <textarea rows="5" cols="60" class="content" id="inputtext" type="text"></textarea>
         <button class="myBtn" id="myvoice" >speack</button><br><br><br>
         <button class="myBtn" id="recordButton">Record</button>
         <!-- <button id="pauseButton" disabled>Pause</button> -->

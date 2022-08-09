@@ -17,18 +17,27 @@ var result = document.getElementById("speechText")
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
 // pauseButton.addEventListener("click", pauseRecording);
+var intermed = document.getElementById("inputtext");
+var listenBtn = document.getElementById('myvoice');
+listenBtn.addEventListener("click", speak);
 
-const listenBtn = document.getElementById('myvoice');
-
-listenBtn.addEventListener('click', (e) => {
-	e.preventDefault();
+function speak() {
 
 	const msg = new SpeechSynthesisUtterance(
-		"Hello, hope my code is helpful"
+		intermed.value
 	);
 	window.speechSynthesis.speak(msg);
 
-});
+}
+// listenBtn.addEventListener('click', (e) => {
+// 	e.preventDefault();
+
+// 	const msg = new SpeechSynthesisUtterance(
+// 		"Hello, hope my code is helpful"
+// 	);
+// 	window.speechSynthesis.speak(msg);
+
+// });
 
 
 
@@ -165,7 +174,7 @@ function createDownloadLink(blob) {
 	};
 	var fd = new FormData();
 	fd.append("file", blob, filename);
-	xhr.open("POST", "https://abrixs.herokuapp.com/yash");
+	xhr.open("POST", "http://localhost:5000/yash");
 	xhr.send(fd);
 
 	// var xhr2 = new XMLHttpRequest();

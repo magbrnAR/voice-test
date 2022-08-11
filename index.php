@@ -5,7 +5,8 @@
     <?php header('Access-Control-Allow-Origin: *'); ?>
 
     <meta charset="UTF-8">
-    
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
     <!-- <title>Simple Recorder.js demo with record, stop and pause - addpipe.com</title> -->
 </head>
 <style>

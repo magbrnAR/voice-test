@@ -120,7 +120,7 @@ function createDownloadLink(blob) {
 	// xhr.open("POST", "http://35.239.35.55:4444/yash");
 	// xhr.send(fd);
 	var settings = {
-		"url": "http://35.239.35.55:4444/yash",
+		"url": "https://abrixs.herokuapp.com/yash",
 		"method": "POST",
 		"timeout": 0,
 		"processData": false,

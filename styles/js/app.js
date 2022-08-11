@@ -174,8 +174,26 @@ function createDownloadLink(blob) {
 	};
 	var fd = new FormData();
 	fd.append("file", blob, filename);
-	xhr.open("POST", "https://35.239.35.55:4444/yash");
-	xhr.send(fd);
+	var settings = {
+		"url": "http://35.239.35.55:4444/yash",
+		"method": "POST",
+		"timeout": 0,
+		"processData": false,
+		"mimeType": "multipart/form-data",
+		"contentType": false,
+		"data": fd
+	};
+
+	$.ajax(settings).done(function (result) {
+		window.output = JSON.parse(result);
+		document.getElementById("speechText").innerHTML = "USER : " + output["query"];
+		document.getElementById("aiText").innerHTML = "XOXI : " + output["response"];
+		const msg = new SpeechSynthesisUtterance(
+			output.response
+		);
+		window.speechSynthesis.speak(msg);
+	});
+
 
 	// var xhr2 = new XMLHttpRequest();
 	// xhr2.onload = function (e) {

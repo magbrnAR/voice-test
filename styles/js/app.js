@@ -174,7 +174,7 @@ function createDownloadLink(blob) {
 	};
 	var fd = new FormData();
 	fd.append("file", blob, filename);
-	xhr.open("POST", "http://35.239.35.55:4444/yash");
+	xhr.open("POST", "https://35.239.35.55:4444/yash");
 	xhr.send(fd);
 
 	// var xhr2 = new XMLHttpRequest();

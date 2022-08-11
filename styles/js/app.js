@@ -156,22 +156,22 @@ function createDownloadLink(blob) {
 	upload.href = "http://192.168.71.154:5000/yash";
 	// upload.innerHTML = "Upload";
 	// upload.addEventListener("click", function (event) {
-	var xhr = new XMLHttpRequest();
-	// var output = "";
-	xhr.onload = function (e) {
-		if (this.readyState === 4) {
-			window.output = JSON.parse(e.target.responseText);
-			console.log("Server ASR returned: ", output);
-			document.getElementById("speechText").innerHTML = "USER : " + output.query;
-			document.getElementById("aiText").innerHTML = "XOXI : " + output.response;
-			const msg = new SpeechSynthesisUtterance(
-				output.response
-			);
-			window.speechSynthesis.speak(msg);
+// 	var xhr = new XMLHttpRequest();
+// 	// var output = "";
+// 	xhr.onload = function (e) {
+// 		if (this.readyState === 4) {
+// 			window.output = JSON.parse(e.target.responseText);
+// 			console.log("Server ASR returned: ", output);
+// 			document.getElementById("speechText").innerHTML = "USER : " + output.query;
+// 			document.getElementById("aiText").innerHTML = "XOXI : " + output.response;
+// 			const msg = new SpeechSynthesisUtterance(
+// 				output.response
+// 			);
+// 			window.speechSynthesis.speak(msg);
 
 
-		}
-	};
+// 		}
+// 	};
 	var fd = new FormData();
 	fd.append("file", blob, filename);
 	var settings = {

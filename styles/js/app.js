@@ -1,6 +1,42 @@
 //webkitURL is deprecated but nevertheless
 URL = window.URL || window.webkitURL;
 
+
+let speech = new SpeechSynthesisUtterance();
+speech.lang = "en";
+
+let voices = [];
+window.speechSynthesis.onvoiceschanged = () => {
+	voices = window.speechSynthesis.getVoices();
+	speech.voice = voices[0];
+	let voiceSelect = document.querySelector("#voices");
+	voices.forEach((voice, i) => (voiceSelect.options[i] = new Option(voice.name, i)));
+};
+
+document.querySelector("#rate").addEventListener("input", () => {
+	const rate = document.querySelector("#rate").value;
+	speech.rate = rate;
+	document.querySelector("#rate-label").innerHTML = rate;
+});
+
+document.querySelector("#volume").addEventListener("input", () => {
+	const volume = document.querySelector("#volume").value;
+	speech.volume = volume;
+	document.querySelector("#volume-label").innerHTML = volume;
+});
+
+document.querySelector("#pitch").addEventListener("input", () => {
+	const pitch = document.querySelector("#pitch").value;
+	speech.pitch = pitch;
+	document.querySelector("#pitch-label").innerHTML = pitch;
+});
+
+document.querySelector("#voices").addEventListener("change", () => {
+	speech.voice = voices[document.querySelector("#voices").value];
+});
+
+
+
 var gumStream;                      //stream from getUserMedia()
 var rec;                            //Recorder.js object
 var input;                          //MediaStreamAudioSourceNode we'll be recording
@@ -21,12 +57,18 @@ var intermed = document.getElementById("inputtext");
 var listenBtn = document.getElementById('myvoice');
 listenBtn.addEventListener("click", speak);
 
+
+
+
 function speak() {
 
-	const msg = new SpeechSynthesisUtterance(
-		intermed.value
-	);
-	window.speechSynthesis.speak(msg);
+	// const msg = new SpeechSynthesisUtterance(
+	// 	intermed.value
+	// );
+	speech.text = intermed.value
+	// msg.rate = 0.75;
+	// console.log(window.speechSynthesis.getVoices())//) = 1.5;
+	window.speechSynthesis.speak(speech);
 
 }
 
@@ -77,8 +119,9 @@ function pauseRecording() {
 }
 
 function stopRecording() {
+	document.getElementById("myname").style.display = "flex";
 	stopButton.disabled = true;
-	recordButton.disabled = false;
+	recordButton.disabled = true;
 	rec.stop();
 
 	//stop microphone access
@@ -120,7 +163,7 @@ function createDownloadLink(blob) {
 	// xhr.open("POST", "http://35.239.35.55:4444/yash");
 	// xhr.send(fd);
 	var settings = {
-		"url": "https://abrixs.herokuapp.com/yash",
+		"url": "http://35.239.35.55:4444/yash",
 		"method": "POST",
 		"timeout": 0,
 		"processData": false,
@@ -137,6 +180,14 @@ function createDownloadLink(blob) {
 			output.response
 		);
 		window.speechSynthesis.speak(msg);
+		recordButton.disabled = false;
+		document.getElementById("myname").style.display = "none";
 	});
 
+}
+
+
+
+function myFunction() {
+	document.getElementById("myname").style.display = "flex";
 }

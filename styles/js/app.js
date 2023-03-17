@@ -166,7 +166,7 @@ function createDownloadLink(blob) {
 	};
 	options.body = fd
 	console.log(options)
-	fetch('http://35.239.35.55:4444/yash', options).then(data => data.json())
+	fetch('http://34.136.44.96:4444/yash', options).then(data => data.json())
 		.then(data => {
 			// window.output = JSON.parse(e.target.responseText);
 			// console.log("Server ASR returned: ", output);

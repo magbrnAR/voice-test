@@ -162,7 +162,7 @@ function createDownloadLink(blob) {
 	fd.append("file", blob);
 	const options = {
 		method: 'POST',
-		mode: 'cors'
+		headers: {accept: 'application/json', 'Content-Type': 'application/json'}
 	};
 	options.body = fd
 	console.log(options)

@@ -158,14 +158,14 @@ function createDownloadLink(blob) {
 
 	// 	}
 	// };
-	const fd = new FormData();
-	fd.append("file", blob);
-	const options = {
-		method: 'POST',
-		headers: {accept: 'application/json', 'Content-Type': 'application/json'}
-	};
-	options.body = fd
-	console.log(options)
+// 	const fd = new FormData();
+// 	fd.append("file", blob);
+// 	const options = {
+// 		method: 'POST',
+// 		headers: {accept: 'application/json', 'Content-Type': 'application/json'}
+// 	};
+// 	options.body = fd
+// 	console.log(options)
 // 	fetch('http://34.136.44.96:4444/yash', options).then(data => data.json())
 // 		.then(data => {
 // 			// window.output = JSON.parse(e.target.responseText);

@@ -36,7 +36,6 @@ document.querySelector("#voices").addEventListener("change", () => {
 });
 
 
-
 var gumStream;                      //stream from getUserMedia()
 var rec;                            //Recorder.js object
 var input;                          //MediaStreamAudioSourceNode we'll be recording
@@ -47,29 +46,19 @@ var audioContext //audio context to help us record
 
 var recordButton = document.getElementById("recordButton");
 var stopButton = document.getElementById("stopButton");
-// var pauseButton = document.getElementById("pauseButton");
+
 var result = document.getElementById("speechText")
-//add events to those 2 buttons
+
 recordButton.addEventListener("click", startRecording);
 stopButton.addEventListener("click", stopRecording);
-// pauseButton.addEventListener("click", pauseRecording);
+
 var intermed = document.getElementById("inputtext");
 var listenBtn = document.getElementById('myvoice');
 listenBtn.addEventListener("click", speak);
 
-
-
-
 function speak() {
-
-	// const msg = new SpeechSynthesisUtterance(
-	// 	intermed.value
-	// );
 	speech.text = intermed.value
-	// msg.rate = 0.75;
-	// console.log(window.speechSynthesis.getVoices())//) = 1.5;
 	window.speechSynthesis.speak(speech);
-
 }
 
 
@@ -77,12 +66,11 @@ function startRecording() {
 
 	var constraints = { audio: true, video: false }
 
-
+	window.speechSynthesis.cancel();
 	recordButton.disabled = true;
 	stopButton.disabled = false;
 
 	navigator.mediaDevices.getUserMedia({ audio: true }).then(function (stream) {
-		console.log("getUserMedia() success, stream created, initializing Recorder.js ...");
 
 		audioContext = new AudioContext();
 
@@ -142,48 +130,10 @@ function createDownloadLink(blob) {
 	au.src = url;
 
 	//upload link
-	// var upload = document.createElement('a');
-	// var xhr = new XMLHttpRequest();
-	// xhr.onload = function (e) {
-	// 	if (this.readyState === 4) {
-	// 		window.output = JSON.parse(e.target.responseText);
-	// 		console.log("Server ASR returned: ", output);
-	// 		document.getElementById("speechText").innerHTML = "USER : " + output.query;
-	// 		document.getElementById("aiText").innerHTML = "XOXI : " + output.response;
-	// 		const msg = new SpeechSynthesisUtterance(
-	// 			output.response
-	// 		);
-	// 		window.speechSynthesis.speak(msg);
 
-
-	// 	}
-	// };
-// 	const fd = new FormData();
-// 	fd.append("file", blob);
-// 	const options = {
-// 		method: 'POST',
-// 		headers: {accept: 'application/json', 'Content-Type': 'application/json'}
-// 	};
-// 	options.body = fd
-// 	console.log(options)
-// 	fetch('http://34.136.44.96:4444/yash', options).then(data => data.json())
-// 		.then(data => {
-// 			// window.output = JSON.parse(e.target.responseText);
-// 			// console.log("Server ASR returned: ", output);
-// 			document.getElementById("speechText").innerHTML = "USER : " + data.query;
-// 			document.getElementById("aiText").innerHTML = "XOXE : " + data.response;
-// 			speech.text = data.response
-// 			window.speechSynthesis.speak(speech);
-// 			recordButton.disabled = false;
-// 			document.getElementById("myname").style.display = "none";
-// 		}).catch((error) => {
-// 			console.error('Error:', error);
-// 		});
-	var fd = new FormData();
-	fd.append("file", blob, filename);
-	// xhr.open("POST", "http://35.239.35.55:4444/yash");
-	// xhr.send(fd);
-	var settings = {
+	const fd = new FormData();
+	fd.append("file", blob);
+    var settings = {
 		"url": "http://34.136.44.96:4444/yash",
 		"method": "POST",
 		"timeout": 0,
@@ -205,8 +155,8 @@ function createDownloadLink(blob) {
 		document.getElementById("myname").style.display = "none";
 	});
 
-}
 
+}
 
 
 function myFunction() {
